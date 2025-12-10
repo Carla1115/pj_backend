@@ -18,6 +18,8 @@ CORS(app, supports_credentials=True, resources={ # <--
     }
 })
 
+SECRET_KEY = os.environ.get("SECRET_KEY", "carlaypaula")
+
 # ---------------------------
 # Configuración base de datos (en Render)
 # ---------------------------
@@ -328,6 +330,7 @@ def upload_image():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
 
