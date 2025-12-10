@@ -8,15 +8,15 @@ from datetime import datetime, timedelta
 import os
 
 app = Flask(__name__) 
-CORS(app, supports_credentials=True, resources={ # <--
-    r"/*": {
-        "origins": ["http://localhost:5173", "https://pj-fronted.onrender.com", "https://pj-backend-bs1t.onrender.com"],
-        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"],
-        "expose_headers": ["Content-Type", "Set-Cookie", "Authorization"],
-        "supports_credentials": True
-    }
-})
+CORS(
+    app,
+    supports_credentials=True,
+    origins=[
+        "http://localhost:5173",
+        "https://pj-fronted.onrender.com"
+    ]
+)
+
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "carlaypaula")
 
@@ -330,6 +330,7 @@ def upload_image():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
 
