@@ -10,7 +10,7 @@ import os
 app = Flask(__name__) 
 CORS(app, supports_credentials=True, resources={ # <--
     r"/*": {
-        "origins": ["http://localhost:5173"],
+        "origins": ["http://localhost:5173", "https://pj-fronted.onrender.com"],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"],
         "expose_headers": ["Content-Type", "Set-Cookie", "Authorization"],
@@ -328,5 +328,6 @@ def upload_image():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
