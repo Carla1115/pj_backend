@@ -52,7 +52,8 @@ def init_db():
             titulo TEXT NOT NULL,
             anio INT,
             genero TEXT,
-            url TEXT
+            url TEXT,
+            imagen TEXT
         )
     """)
 
@@ -327,4 +328,5 @@ def upload_image():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
