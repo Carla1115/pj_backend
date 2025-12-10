@@ -19,21 +19,14 @@ CORS(app, supports_credentials=True, resources={ # <--
 })
 
 # ---------------------------
-# Configuración base de datos
+# Configuración base de datos (en Render)
 # ---------------------------
-DB_CONFIG = {
-    "dbname": os.environ.get("DB_NAME", "juegosdb"),
-    "user": os.environ.get("DB_USER", "postgres"),
-    "password": os.environ.get("DB_PASS", "posgresuam"),
-    "host": os.environ.get("DB_HOST", "localhost"),
-    "port": int(os.environ.get("DB_PORT", 5432))
-}
-
-# Clave para firmar JWT (usar variable de entorno en producción)
-SECRET_KEY = os.environ.get("SECRET_KEY", "carlaypaula")
+DATABASE_URL = os.environ.get("DATABASE_URL")  # <- Render te da esta URL
 
 def get_connection():
-    return psycopg2.connect(**DB_CONFIG)
+    if not DATABASE_URL:
+        raise RuntimeError("DATABASE_URL no está definida en Render")
+    return psycopg2.connect(DATABASE_URL)
 
 # ---------------------------
 # Inicialización
@@ -334,3 +327,4 @@ def upload_image():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
