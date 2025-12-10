@@ -3,4 +3,5 @@ gunicorn
 sqlalchemy
 psycopg2-binary
 flask-cors
-PyJWT
+PyJWT==2.8.0
+
